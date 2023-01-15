@@ -13,7 +13,7 @@ class TestBowlingGame(TestCase):
         with self.assertRaises(ValueError) as e:
             self.game.roll(-1)
         
-        self.assertEqual(str(e.exception), "Pins can't be less than 0.")
+        self.assertEqual(str(e.exception), "Pins can't be less than nor equal to 0.")
     
     def test_roll_greater_than_ten(self):
         with self.assertRaises(ValueError) as e:
@@ -33,3 +33,12 @@ class TestBowlingGame(TestCase):
         self.game.roll(3)
 
         self.assertEqual(self.game.score(), 16)
+    
+    def test_one_strike(self):
+        self.game.roll(10)
+        self.game.roll(4)
+        self.game.roll(3)
+
+        self.assertEqual(self.game.score(), 24)
+    
+    
