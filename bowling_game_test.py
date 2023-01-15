@@ -26,3 +26,10 @@ class TestBowlingGame(TestCase):
             self.game.roll(1)
         
         self.assertEqual(self.game.score(), 20)
+    
+    def test_one_spare(self):
+        self.game.roll(8)
+        self.game.roll(2)
+        self.game.roll(3)
+
+        self.assertEqual(self.game.score(), 16)
