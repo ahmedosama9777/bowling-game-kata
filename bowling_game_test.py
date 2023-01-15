@@ -20,3 +20,9 @@ class TestBowlingGame(TestCase):
             self.game.roll(11)
 
         self.assertEqual(str(e.exception), "Pins can't be greater than 10.")
+    
+    def test_all_ones_game(self):
+        for _ in range(20):
+            self.game.roll(1)
+        
+        self.assertEqual(self.game.score(), 20)
